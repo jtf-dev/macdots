@@ -1,0 +1,36 @@
+[alias]
+	branch-name = "!git rev-parse --abbrev-ref HEAD"
+	fzf = "!git checkout $(git branch --color=always --all --sort=-committerdate | grep -v HEAD | fzf --height 50% --ansi --no-multi --preview-window right:65%  --preview 'git log -n 50 --color=always --date=short --pretty=\"format:%C(auto)%cd %h%d %s\" $(sed \"s/.* //\" <<< {})' | sed \"s/.* //\")"
+	lol = "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+	publish = "!git push -u origin $(git branch-name)"
+	unpublish = "!git push origin :$(git branch-name)"
+
+[core]
+	ignorecase = "false"
+
+[diff]
+	external = "difft"
+	tool = "nvimdiff"
+
+[difftool]
+	prompt = true
+
+[difftool "nvimdiff"]
+	cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+[init]
+	defaultBranch = "main"
+
+[merge]
+	tool = "nvimdiff"
+
+[merge "npm-merge-driver"]
+	driver = "npx npm-merge-driver merge %A %O %B %P"
+	name = "automatically merge npm lockfiles"
+
+[pull]
+	rebase = false
+
+[user]
+	email = "jtomfletcher@gmail.com"
+	name = "jtf-dev"
