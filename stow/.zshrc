@@ -1,5 +1,7 @@
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
+alias brew-edit="nvim ~/dotfiles/Brewfile"
+alias brew-build="brew bundle --file ~/dotfiles/Brewfile"
 
 # history setup
 HISTFILE=$HOME/.zhistory
@@ -35,3 +37,5 @@ eval $(thefuck --alias fk)
 eval "$(zoxide init zsh)"
 
 alias cd="z"
+
+eval "$(starship init zsh)"

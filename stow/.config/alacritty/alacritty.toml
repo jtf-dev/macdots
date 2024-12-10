@@ -74,6 +74,7 @@ semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 [window]
 dynamic_padding = true
 dynamic_title = true
+startup_mode = "Maximized"
 [window.dimensions]
 columns = 0
 lines = 0
