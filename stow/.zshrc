@@ -3,6 +3,23 @@ alias edit-zsh="nvim ~/.zshrc"
 alias brew-edit="nvim ~/dotfiles/Brewfile"
 alias brew-build="brew bundle --file ~/dotfiles/Brewfile"
 
+config() {
+  case "$1" in
+    nvim)
+      nvim ~/dotfiles/stow/.config/nvim
+      ;;
+    starship)
+      nvim ~/dotfiles/stow/.config/starship.toml
+      ;;
+    zshrc)
+      nvim ~/.zshrc
+      ;;
+    *)
+      echo "Unknown config option: $1"
+      ;;
+  esac
+}
+
 # history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
@@ -37,5 +54,9 @@ eval $(thefuck --alias fk)
 eval "$(zoxide init zsh)"
 
 alias cd="z"
+
+export NVM_DIR="$HOME/.nvm"
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 eval "$(starship init zsh)"
